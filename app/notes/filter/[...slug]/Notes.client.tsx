@@ -9,6 +9,7 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebouncedCallback } from "use-debounce";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import css from '../../[id]/Notes.client.module.css'
+import {useRouter} from "next/navigation";
 
 type NotesClientProps = {
   tag?: string
@@ -16,9 +17,9 @@ type NotesClientProps = {
 
 export default function App({tag} :NotesClientProps){
 
-
+  const router = useRouter();
   const [page, setPage] = useState(1)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  // const [isModalOpen, setIsModalOpen] = useState(false)
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
   const queryClient = useQueryClient()
@@ -54,7 +55,7 @@ export default function App({tag} :NotesClientProps){
 
       <button
         className={css.button}
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => router.push('/notes/action/create')}
       >
         Create note +
       </button>
@@ -84,7 +85,7 @@ export default function App({tag} :NotesClientProps){
       </>
     )}
 
-    {isModalOpen && (
+    {/* {isModalOpen && (
       <Modal onClose={() => setIsModalOpen(false)}>
         <NoteForm
           onSubmit={(values) => {
@@ -97,6 +98,6 @@ export default function App({tag} :NotesClientProps){
           onCancel={() => setIsModalOpen(false)}
         />
       </Modal>
-    )}
+    )} */}
   </div>
 );}
