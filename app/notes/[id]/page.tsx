@@ -17,7 +17,7 @@ const {title, content: description} = await fetchNoteById(id)
     openGraph : {
     title, 
     description,
-    url: 'https://notehub.com/',
+    url: `https://notehub.com/notes/${id}`,
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

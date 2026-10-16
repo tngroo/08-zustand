@@ -4,11 +4,11 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata ={
   title: 'Create Note',
-  description: 'New notes',
+  description: 'This page allow you to create new notes',
   openGraph : {
      title: 'Create Note',
-    description: 'New notes',
-    url: 'https://notehub.com/',
+    description: 'This page allow you to create new notes',
+    url: 'https://notehub.com/notes/action/create',
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',

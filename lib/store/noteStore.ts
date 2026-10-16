@@ -11,8 +11,8 @@ const initialDraft = {
 };
 
 interface NoteDraftStore {
-    note: Partial<CreateNoteParams>, 
-    setDraft :(postNoteData:Partial<CreateNoteParams>) => void
+    draft: CreateNoteParams, 
+    setDraft :(postNoteData:CreateNoteParams) => void
     clearDraft: () =>void
 }
 
@@ -20,16 +20,16 @@ interface NoteDraftStore {
 export const useNoteDraft = create<NoteDraftStore>()(
     persist(
         (set) => ({
-            note: initialDraft,
-            setDraft: (postNoteData: Partial<CreateNoteParams>) => {
-                set((prevState) => ({ note: { ...prevState.note, ...postNoteData } }))
+            draft: initialDraft,
+            setDraft: (postNoteData) => {
+                set({draft: postNoteData})
             },
             clearDraft: () => {
-                set({ note: initialDraft })
+                set({ draft: initialDraft })
             },
         }),
         { name: 'note-draft-storage',
-            partialize: (state) =>({note: state.note})
+            partialize: (state) =>({draft: state.draft})
          },
     ),
 )

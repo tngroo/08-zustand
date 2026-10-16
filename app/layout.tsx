@@ -4,11 +4,10 @@ import "./globals.css";
 import Header from '@/components/Header/Header'
 import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
-import { title } from "process";
 
 const roboto = Roboto({
   subsets: ['cyrillic', 'latin'],
-  weight: '400',
+  weight: ['400'],
   variable: '--font-roboto',
   display: 'swap'
 })
@@ -36,9 +35,9 @@ interface LayoutProps{
 }
 export default function RootLayout({ children, modal }: LayoutProps) {
   return (
-    <html lang="en" className={`${roboto.variable} `}>
+    <html lang="en" >
 <TanStackProvider>
-      <body>
+      <body className={`${roboto.variable} `}>
       <Header />
       {children}
       {modal}
