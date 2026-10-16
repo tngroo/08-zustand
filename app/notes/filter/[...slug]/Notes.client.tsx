@@ -22,7 +22,7 @@ export default function App({tag} :NotesClientProps){
   // const [isModalOpen, setIsModalOpen] = useState(false)
   const [search, setSearch] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const queryClient = useQueryClient()
+  // const queryClient = useQueryClient()
   const {data, isLoading, isError} = useQuery({
     queryKey: ["notes", page, search, tag], 
     queryFn: ()=> fetchNotes({page, query: search, tag}),
@@ -34,12 +34,12 @@ export default function App({tag} :NotesClientProps){
     setPage(1)
   }, 300)
 
-  const mutation = useMutation({
-    mutationFn: createNote,
-    onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['notes']})
-    }
-  })
+  // const mutation = useMutation({
+  //   mutationFn: createNote,
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({queryKey: ['notes']})
+  //   }
+  // })
 
   return (
   <div className={css.app}>
