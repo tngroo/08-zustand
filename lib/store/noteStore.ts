@@ -4,7 +4,7 @@ import { CreateNoteParams } from '../api';
 import { persist } from 'zustand/middleware';
 
 
-const initialDraft = {
+const initialDraft : CreateNoteParams = {
   title: '',
   content: '',
   tag: 'Todo',
@@ -20,12 +20,12 @@ interface NoteDraftStore {
 export const useNoteDraft = create<NoteDraftStore>()(
     persist(
         (set) => ({
-            draft: initialDraft,
+            draft: {...initialDraft},
             setDraft: (postNoteData) => {
                 set({draft: postNoteData})
             },
             clearDraft: () => {
-                set({ draft: initialDraft })
+                set({ draft: {...initialDraft} })
             },
         }),
         { name: 'note-draft-storage',

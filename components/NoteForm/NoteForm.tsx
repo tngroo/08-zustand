@@ -8,10 +8,6 @@ import { useNoteDraft } from '@/lib/store/noteStore';
 import { ChangeEvent } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-export interface NoteFormProps{
-    onCancel: () =>void
-    onSubmit: (value: CreateNoteParams) => void;
-}
 
 const validation = Yup.object({
     title: Yup.string().min(3).max(50).required(),
@@ -73,7 +69,7 @@ export default function NoteForm() {
 
         <div className={css.formGroup}>
         <label htmlFor="tag">Tag</label>
-        <select  value={draft.tag} onChange={handleChange}
+        <select  value={draft.tag} onChange={handleChange} required 
         id="tag" name="tag" className={css.select}>
             <option value="Todo">Todo</option>
             <option value="Work">Work</option>
@@ -84,7 +80,7 @@ export default function NoteForm() {
         </div>
 
         <div className={css.actions}>
-        <button type="button" className={css.cancelButton} onClick={()=>router.back}>
+        <button type="button" className={css.cancelButton} onClick={()=>router.back()}>
             Cancel
         </button>
         <button type="submit" className={css.submitButton} >
