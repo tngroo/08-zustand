@@ -23,7 +23,7 @@ export default function NoteForm() {
     
 
     
-    const {mutate, isPending} = useMutation({
+    const {mutate} = useMutation({
         mutationFn: createNote,
         onSuccess:() =>{
             queryClient.invalidateQueries({
